@@ -54,19 +54,7 @@ meta_contigs.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -173,19 +161,7 @@ mylo_contigs.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -274,8 +250,8 @@ The analysis of contig length distributions reveals a systematic difference in a
 
 
 ```python
-circular_length_df = {"Circular": meta_contigs[~meta_contigs["circular"]]["length"],
-                      "Linear": meta_contigs[meta_contigs["circular"]]["length"]}
+circular_length_df = {"Circular": meta_contigs[meta_contigs["circular"]]["length"],
+                      "Linear": meta_contigs[~meta_contigs["circular"]]["length"]}
 sns.histplot(circular_length_df, log_scale=True)
 plt.title("[metaMDBG] Contigs length distribution")
 plt.xlabel("Contig length (bp)")
@@ -290,8 +266,8 @@ plt.yscale("log")
 
 
 ```python
-circular_length_df = {"Circular": mylo_contigs[~mylo_contigs["circular"]]["length"],
-                      "Linear": mylo_contigs[mylo_contigs["circular"]]["length"]}
+circular_length_df = {"Circular": mylo_contigs[mylo_contigs["circular"]]["length"],
+                      "Linear": mylo_contigs[~mylo_contigs["circular"]]["length"]}
 sns.histplot(circular_length_df, log_scale=True)
 plt.title("[myloasm] Contigs length distribution")
 plt.xlabel("Contig length (bp)")
@@ -308,43 +284,31 @@ The scatterplots visualize the relationship between contig length and read cover
 
 
 ```python
-df_filtered = meta_contigs[meta_contigs["length"] < meta_contigs["length"].quantile(.99)]
-ax = sns.lmplot(x="length", y="coverage", data=df_filtered, hue="circular", scatter_kws={'alpha': 0.6}, line_kws={"lw": 3})
+ax = sns.lmplot(x="length", y="coverage", data=meta_contigs, hue="circular", scatter_kws={'alpha': 0.6}, line_kws={"lw": 3})
 plt.title("[metaMDBG] Contig length by coverage distribution")
 plt.xlabel("Contig length (bp)")
 plt.ylabel("Coverage")
-ax.axes.flat[0].set_xticklabels(ax.axes.flat[0].get_xticklabels(), rotation=45, ha='right')
 plt.tight_layout()
 ```
 
-    C:\Users\vilif\AppData\Local\Temp\ipykernel_3520\3676298044.py:6: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-      ax.axes.flat[0].set_xticklabels(ax.axes.flat[0].get_xticklabels(), rotation=45, ha='right')
-    
-
 
     
-![png](BZD_files/BZD_14_1.png)
+![png](BZD_files/BZD_14_0.png)
     
 
 
 
 ```python
-df_filtered = mylo_contigs[mylo_contigs["length"] < mylo_contigs["length"].quantile(.99)]
-ax = sns.lmplot(x="length", y="coverage", data=df_filtered, hue="circular", scatter_kws={'alpha': 0.6}, line_kws={"lw": 3})
+ax = sns.lmplot(x="length", y="coverage", data=mylo_contigs, hue="circular", scatter_kws={'alpha': 0.6}, line_kws={"lw": 3})
 plt.title("[myloasm] Contig length by coverage distribution")
 plt.xlabel("Contig length (bp)")
 plt.ylabel("Coverage")
-ax.axes.flat[0].set_xticklabels(ax.axes.flat[0].get_xticklabels(), rotation=45, ha='right')
 plt.tight_layout()
 ```
 
-    C:\Users\vilif\AppData\Local\Temp\ipykernel_3520\1371065925.py:6: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-      ax.axes.flat[0].set_xticklabels(ax.axes.flat[0].get_xticklabels(), rotation=45, ha='right')
-    
-
 
     
-![png](BZD_files/BZD_15_1.png)
+![png](BZD_files/BZD_15_0.png)
     
 
 
@@ -417,19 +381,7 @@ print(f"Number of MAGs by assembler:\n\tmetaMDBG: {meta_m2.shape[0]},\n\tmyolasm
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -477,19 +429,7 @@ print(f"Number of MAGs by assembler:\n\tmetaMDBG: {meta_m2.shape[0]},\n\tmyolasm
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -731,19 +671,7 @@ pd.concat([meta_gtdb_ar53_counts.drop(columns=["Name"]).rename({"count": "metaMD
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -799,7 +727,7 @@ plt.title("Comparison of number of large contigs per Bacteria phylum between ass
 plt.tight_layout()
 ```
 
-    C:\Users\vilif\AppData\Local\Temp\ipykernel_3520\4155299355.py:7: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+    C:\Users\vilif\AppData\Local\Temp\ipykernel_15652\4155299355.py:7: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
       ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right')
     
 
@@ -820,19 +748,7 @@ pd.concat([meta_gtdb_bac120_counts.drop(columns=["Name"]).rename({"count": "meta
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -898,7 +814,7 @@ pd.concat([meta_gtdb_bac120_counts.drop(columns=["Name"]).rename({"count": "meta
       <td>1</td>
     </tr>
     <tr>
-      <th>Acidobacteriota</th>
+      <th>Bipolaricaulota</th>
       <td>0</td>
       <td>1</td>
     </tr>
@@ -908,7 +824,7 @@ pd.concat([meta_gtdb_bac120_counts.drop(columns=["Name"]).rename({"count": "meta
       <td>1</td>
     </tr>
     <tr>
-      <th>Bipolaricaulota</th>
+      <th>Acidobacteriota</th>
       <td>0</td>
       <td>1</td>
     </tr>
